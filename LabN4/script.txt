@@ -1,0 +1,1 @@
+clear ; ml /coff /c .\LabN4V17.asm ; link /subsystem:windows LabN4V17 ; OLLYDBG.EXE .\LabN4V17.exe
