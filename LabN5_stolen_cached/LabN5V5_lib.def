@@ -1,0 +1,3 @@
+LIBRARY LabN5V5_lib
+EXPORTS
+   clear_negative_numbers_in_array @8

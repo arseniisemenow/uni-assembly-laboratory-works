@@ -1,0 +1,59 @@
+Microsoft (R) Macro Assembler Version 6.14.8444		    11/13/23 15:51:41
+.\lab5_1.asm						     Page 1 - 1
+
+
+				.486
+				.model flat, stdcall
+				includelib <lab5_lib.lib>
+ 00000000			.data
+ 00000000 0001 FFFD FFFA	mass SWORD 1,-3,-6,-3,4 
+	   FFFD 0004
+ 00000000			.code
+
+				Positives proto mas:ptr sword, mas_size:sbyte
+ 00000000			_n:
+ 00000000  0E			    push cs
+ 00000001  1F			    pop ds
+				    invoke Positives, addr mass, 5
+ 0000000E  C3			    ret
+				    end _n
+Microsoft (R) Macro Assembler Version 6.14.8444		    11/13/23 15:51:41
+.\lab5_1.asm						     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+_DATA  . . . . . . . . . . . . .	32 Bit	 0000000A Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 0000000F Para	  Public  'CODE'	
+
+
+Procedures,  parameters and locals:
+
+                N a m e                 Type     Value    Attr
+
+Positives  . . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000003h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+_n . . . . . . . . . . . . . . .	L Near	 00000000 _TEXT	Public STDCALL
+mass . . . . . . . . . . . . . .	Word	 00000000 _DATA	
+
+	   0 Warnings
+	   0 Errors
