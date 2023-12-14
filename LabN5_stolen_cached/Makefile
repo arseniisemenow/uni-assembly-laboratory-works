@@ -15,6 +15,7 @@ build: build_dynamic_library build_main
 	
 clean:
 	-del -fR ${MAIN_NAME}.obj
+	-del -fR ${MAIN_NAME}.exe
 	-del -fR ${LIBRARY_NAME}.obj
 	-del -fR ${LIBRARY_NAME}.exp
 	-del -fR ${LIBRARY_NAME}.dll
