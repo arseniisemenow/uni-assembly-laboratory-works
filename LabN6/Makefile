@@ -1,19 +1,36 @@
-V1_SOURCE_NAME := LabN6V1
-V1_LIBRARY_PATH := E:\files-from-machine-to-laptop\main-trash\University\KNRTU-KAI\5-term\assembly-programming\toolkit\masm32\lib\kernel32.lib
+LIBRARY_PATH := E:\files-from-machine-to-laptop\main-trash\University\KNRTU-KAI\5-term\assembly-programming\toolkit\masm32\lib\kernel32.lib
+
 V1_ENTRY_NAME := Start
+V1_SOURCE_NAME := LabN6V1
 
+V4_SOURCE_NAME := LabN6V4d
+V4_ENTRY_NAME := Start
 
-build_object_file:
+v1_build_object_file:
 	ml /c ${V1_SOURCE_NAME}.asm
 
-build: build_object_file
-	link /subsystem:windows ${V1_SOURCE_NAME}.obj ${V1_LIBRARY_PATH} -entry:${V1_ENTRY_NAME}
+v1_build: build_object_file
+	link /subsystem:windows ${V1_SOURCE_NAME}.obj ${LIBRARY_PATH} -entry:${V1_ENTRY_NAME}
 
-rebuild: clean build
+v1_rebuild: clean build
 
 clean:
 	-del -fR ${V1_SOURCE_NAME}.obj
 	-del -fR ${V1_SOURCE_NAME}.exe
+	-del -fR ${V4_SOURCE_NAME}.obj
+	-del -fR ${V4_SOURCE_NAME}.exe
 
-debug: rebuild
+v1_debug: rebuild
 	ollydbg ${V1_SOURCE_NAME}.exe
+
+v4_build_object_file:
+	ml /c ${V4_SOURCE_NAME}.asm
+
+v4_build: v4_build_object_file
+	link /subsystem:windows ${V4_SOURCE_NAME}.obj ${LIBRARY_PATH} -entry:${V4_ENTRY_NAME}
+
+v4_rebuild:clean v4_build
+
+v4_debug:v4_rebuild
+	ollydbg ${V4_SOURCE_NAME}.exe
+
