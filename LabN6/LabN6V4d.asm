@@ -4,36 +4,30 @@
 include E:\files-from-machine-to-laptop\main-trash\University\KNRTU-KAI\5-term\assembly-programming\toolkit\masm32\include\kernel32.inc
 includelib E:\files-from-machine-to-laptop\main-trash\University\KNRTU-KAI\5-term\assembly-programming\toolkit\masm32\lib\kernel32.lib
 
-public Start
+public Start ; For linker
 .data
 
-line byte "ASSEMBLER"
+message byte "ASSEMBLER"
+message_length=9
 OutH dword ?
 readen dword ?
-COORD struct
-	x dw 0
-	y dw 0
-COORD ends
-cp COORD <>
 COLOR=207
+STD_OUTPUT_HANDLE=(-11)
+SHIFT=52
 
 .code
 
-
 Start:	invoke FreeConsole
 	invoke AllocConsole
-	invoke GetStdHandle, -11
-	mov OutH, eax
 
-	mov cx,52
+	invoke GetStdHandle, STD_OUTPUT_HANDLE
+	invoke SetConsoleCursorPosition, eax, SHIFT
 
-	invoke SetConsoleCursorPosition, eax, cx
-
-	invoke GetStdHandle, -11
+	invoke GetStdHandle, STD_OUTPUT_HANDLE
 	invoke SetConsoleTextAttribute, eax, COLOR
 
-	invoke GetStdHandle, -11
-	invoke WriteConsoleA, eax, addr line, 9, offset readen, 0
+	invoke GetStdHandle, STD_OUTPUT_HANDLE
+	invoke WriteConsoleA, eax, addr message, message_length, offset readen, 0
 
 	invoke FreeConsole
 	invoke ExitProcess,0
