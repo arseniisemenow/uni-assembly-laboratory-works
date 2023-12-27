@@ -9,10 +9,10 @@ V4_ENTRY_NAME := Start
 v1_build_object_file:
 	ml /c ${V1_SOURCE_NAME}.asm
 
-v1_build: build_object_file
+v1_build: v1_build_object_file
 	link /subsystem:windows ${V1_SOURCE_NAME}.obj ${LIBRARY_PATH} -entry:${V1_ENTRY_NAME}
 
-v1_rebuild: clean build
+v1_rebuild: clean v1_build
 
 clean:
 	-del -fR ${V1_SOURCE_NAME}.obj
@@ -20,7 +20,7 @@ clean:
 	-del -fR ${V4_SOURCE_NAME}.obj
 	-del -fR ${V4_SOURCE_NAME}.exe
 
-v1_debug: rebuild
+v1_debug: v1_rebuild
 	ollydbg ${V1_SOURCE_NAME}.exe
 
 v4_build_object_file:

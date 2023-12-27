@@ -10,14 +10,13 @@ public Start ; For linker
 message byte "ASSEMBLER"
 message_length=9
 OutH dword ?
-readen dword ?
 COLOR=207
 STD_OUTPUT_HANDLE=(-11)
 SHIFT=52
 
 .code
 
-Start:	invoke FreeConsole
+Start:	
 	invoke AllocConsole
 
 	invoke GetStdHandle, STD_OUTPUT_HANDLE
@@ -27,7 +26,7 @@ Start:	invoke FreeConsole
 	invoke SetConsoleTextAttribute, eax, COLOR
 
 	invoke GetStdHandle, STD_OUTPUT_HANDLE
-	invoke WriteConsoleA, eax, addr message, message_length, offset readen, 0
+	invoke WriteConsoleA, eax, addr message, message_length, 0, 0
 
 	invoke FreeConsole
 	invoke ExitProcess,0
